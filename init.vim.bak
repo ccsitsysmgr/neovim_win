@@ -1,0 +1,117 @@
+" Filename: init.vim
+" GitHub: https://github.com/dreessen-n/nvim-config
+" Maintainer: Neal Dreessen
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+call plug#begin()
+
+" plugin on GitHub repo
+Plug 'tpope/vim-fugitive' " Git
+Plug 'mattn/emmet-vim' " Emmet
+Plug 'preservim/nerdtree' " Navigation
+Plug 'ajmwagar/vim-deus' " Colorscheme
+Plug 'arzg/vim-colors-xcode' " Another Colorscheme
+Plug 'nvim-lualine/lualine.nvim' " statusline for lua
+Plug 'itchyny/lightline.vim' " statusline in vim script
+Plug 'sheerun/vim-polyglot' " language package
+Plug 'lukas-reineke/indent-blankline.nvim' " Indent-blankline formatting
+Plug 'unblevable/quick-scope' " show hints when using F and T to navigate
+Plug 'dhruvasagar/vim-table-mode' " table creator & formatter
+
+
+call plug#end()            " required
+
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+
+" Put your non-Plug stuff after this line
+
+" Setup Nerdtree to use ctrl+b to toggle
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeIgnore = []
+let g:NERDTreeStatusline = ''
+" Toggle
+nnoremap <silent> <C-b> :NERDTreeToggle<CR>
+
+" Lightline statusline
+let g:lightline = {
+             \ 'colorscheme': 'wombat',
+             \}
+
+
+" TAB-INDENT OPTIONS --moved to usermod.settings.lua
+" set tabstop=4
+" set softtabstop=4
+" set expandtab
+" set smarttab
+" set autoindent
+" set smartindent
+" set shiftwidth=4
+
+" current line numbers (nu) and relative line numbers(rnu)
+" moved to usermod.settings.lua
+set nu rnu
+
+" hidden: recommend by Primeagen; research
+set hidden
+
+" WRAPPING
+" set wrap --moved to usermod.settings.lua
+" Wrap one col before for readability
+set wrapmargin=1
+" Make the width 79 then wrap at 80
+set textwidth=79
+" Show columns at 72 and 79 for comments
+set cc=72,79
+" Display signs/errors if any in col left of nu
+set signcolumn=yes
+
+" Allow backspace to go over indent, eol and start
+set backspace=indent,eol,start
+
+" SYNTAX ON
+syntax on
+
+" FORMAT OPTIONS
+set linebreak
+
+" FOLDING
+" Lines with equal indent form a fold
+set fdm=indent
+
+" Scrolling off by 8 lines; til end or start
+set scrolloff=8
+
+" PRINT OPTIONS working with hardcopy
+set printoptions+=formfeed:y
+
+" Auto-wrap text using 'textwidth'
+set fo-=t
+
+" SEARCHING
+" Incremental search
+set incsearch
+" Keep highlight search on after find. :noh to remove highlight
+" Currently set to not keep highlight on after search
+set nohlsearch
+
+" COLORSCHEMES
+" color industry
+colors deus
+" colorscheme xcodelight
+
+" LIST sets seeing spaces (..) and eol ($)
+" Currently have List off now that using indent-blankline
+" Leave listchar incase we want to kick it on
+" set list
+set listchars=lead:.,eol:$
+
+" Next 4 lines about HISTORY - recommend by Primeagen; research
+" set noswapfile
+" set nobackup
+" set undodir=~/.vim/undodir
+" set undofile
